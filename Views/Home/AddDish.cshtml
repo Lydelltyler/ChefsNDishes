@@ -1,0 +1,53 @@
+@model Dish
+<div class="form-area card col-10 mx-auto">
+    <h3  class=" mx-auto">Add a new Dish Dish!</h3>
+
+    <hr>
+    <form action="/adddish" method="post">
+        <div class="row">
+            <div class="form-item col-4">
+
+                <div class="form-group">
+                    <label asp-for="DishName">Name of Dish</label>
+                    <input class="form-control" asp-for="DishName" type="text">
+                    <span class="text-danger" asp-validation-for="DishName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Calories"> # of Calories</label>
+                    <input class="form-control" asp-for="Calories" type="number">
+                    <span class="text-danger" asp-validation-for="Calories"></span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-item ">
+                    <label asp-for="ChefId">Chef</label>
+                    <select class="form-control" asp-for="ChefId" id="">
+                        @foreach(var c in ViewBag.Chefs)
+                        {
+                        <option value="@c.ChefId" >@c.ChefId @c.FirstName @c.LastName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label asp-for="Taste"></label>
+                    <select class="form-control" asp-for="Taste" id="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-item col-4">
+                <label asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description" id="" cols="20" rows="7"></textarea>
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+        </div>
+        <button class="btn btn-outline-primary btn-block" type="sumbit">Add Dish</button>
+    </form>
+
+
+
+</div>
